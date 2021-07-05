@@ -2,6 +2,10 @@
 var dsnv= new DanhSachNhanVien();
 var validation = new Validation();
 
+function addUser(){
+    console.log("Đây là addUser đã làm xong của hang1");
+}
+
 function getEle(id){
     return document.getElementById(id);
 }
