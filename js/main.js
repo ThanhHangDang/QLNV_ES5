@@ -101,7 +101,7 @@ function taoBang(arr){
         //thực thi phương thức tính tổng lương và xếp loại
         tagTD_TongLuong.innerHTML=arr[i].tongLuong;
         tagTD_XepLoai.innerHTML=arr[i].xepLoai;
-        tagTD_Button_Edit.innerHTML= '<button id="a" class="btn btn-info" data-toggle="modal" data-tagert="#myModal" onclick="suaNhanVien(\''+arr[i].tkNV+'\')">Sửa</button>';
+        tagTD_Button_Edit.innerHTML= '<button class="btn btn-info" onclick="suaNhanVien(\''+arr[i].tkNV+'\')">Sửa</button>';
         tagTD_Button_Delete.innerHTML = '<button class="btn btn-danger" onclick="xoaNhanVien(\''+arr[i].tkNV+'\')">Xoá</button>';
 
         //apenChild 6 cột vào dòng
@@ -148,7 +148,20 @@ function suaNhanVien(tkNV){
     getEle("luongCB").value = nhanVien.luongCB;
     getEle("chucvu").value = nhanVien.chucVu;
     getEle("gioLam").value = nhanVien.gioLam;
+
+    getEle("myModal").classList.add("show");
+    getEle("myModal").style="display: block; padding-right: 16px;"
+    document.body.classList.add("modal-open");
+    document.body.style="padding-right: 16px;";
 }
+
+//Đóng cái bảng modal
+getEle("btnDong").onclick = function () {
+    getEle("myModal").classList.remove("show");
+    getEle("myModal").style="display: none;"
+    document.body.classList="";
+    document.body.style="";
+  };
 
 //cập nhật nhân viên
 getEle("btnCapNhat").addEventListener("click",function(){
@@ -161,6 +174,7 @@ getEle("btnCapNhat").addEventListener("click",function(){
     dsnv.capNhatNhanVien(nhanVien);
     taoBang(dsnv.list);
     setLocalStorage();
+    alert("Cập nhật thành công");
 })
 
 /**
